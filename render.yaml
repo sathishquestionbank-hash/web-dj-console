@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: sync-dj-streamer
+    runtime: node
+    plan: free
+    region: oregon
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: ADMIN_PASSWORD
+        generateValue: true
+      - key: PORT
+        value: 10000
+    autoDeploy: true
